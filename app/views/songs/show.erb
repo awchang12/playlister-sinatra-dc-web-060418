@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Song Details</title>
+</head>
+<body>
+
+<!-- views/songs/show.erb -->
+ 
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+<h1><%= @song.name %></h1>
+<a href="/artists/<%= @song.artist.slug%>"><%=@song.artist.name %></a>
+<ul>
+<% @song.genres.each do |genre|%>
+<li><a href="/genres/<%= genre.slug%>"><%= genre.name%></a></li>
+<% end %>
+</ul>
+    
+</body>
+</html>
